@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { InicioComponent } from './inicio/inicio/inicio.component';
 import { InicioService } from './inicio/service/inicio-service.service';
+import { MainNavComponent } from './common/main-nav/main-nav.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { InicioService } from './inicio/service/inicio-service.service';
     InicioComponent,
     FooterComponent,
     HeaderComponent,
-    DashboardComponent
+    DashboardComponent,
+    MainNavComponent
   ],
   imports: [
     BrowserModule,
