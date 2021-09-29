@@ -12,6 +12,7 @@ import { InicioService } from '../service/inicio-service.service';
 export class InicioComponent implements OnInit {
 
   model: any = {};
+  loginError: boolean = false;
 
     constructor(
         private route: ActivatedRoute,
@@ -21,6 +22,7 @@ export class InicioComponent implements OnInit {
 
     ngOnInit() {
         sessionStorage.setItem('token', '');
+        this.loginError = false;
     }
 
     login() {
@@ -30,8 +32,7 @@ export class InicioComponent implements OnInit {
                 console.log(sessionStorage.getItem("token"));
                 this.router.navigate(['']);                
             } else {
-                alert("Ingreso inválido.");
-                //TODO: mostrar error al ingreso invalido
+                this.loginError = true;
             }
         });
     }
