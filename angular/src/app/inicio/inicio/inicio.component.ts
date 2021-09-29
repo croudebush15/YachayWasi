@@ -30,7 +30,8 @@ export class InicioComponent implements OnInit {
                 console.log(sessionStorage.getItem("token"));
                 this.router.navigate(['']);                
             } else {
-                alert("Ingreso inválido.")
+                alert("Ingreso inválido.");
+                //TODO: mostrar error al ingreso invalido
             }
         });
     }

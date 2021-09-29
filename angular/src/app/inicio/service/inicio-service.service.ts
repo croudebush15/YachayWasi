@@ -7,10 +7,12 @@ import { Observable } from 'rxjs';
 })
 export class InicioService {
 
+  private baseApiUrl = "https://yachay-wasi.herokuapp.com";
+
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string): Observable<boolean>{
-    let url = 'http://localhost:8082/login';
+    const url = `${this.baseApiUrl}/login`;
     return this.http.post<boolean>(url, {
         username: username,
         password: password
@@ -19,5 +21,5 @@ export class InicioService {
 
   getToken(){  
     return !!sessionStorage.getItem("token");  
-    }  
+  }  
 }

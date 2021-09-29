@@ -3,6 +3,8 @@ package com.pe.proyectotechnologico.Controller;
 
 
 import com.pe.proyectotechnologico.Model.User;
+import com.pe.proyectotechnologico.Service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,10 +18,14 @@ import java.util.Base64;
 @CrossOrigin
 public class UserController {
 
+    final UserService service;
+    public UserController(UserService service) {
+        this.service = service;
+    }
+
     @RequestMapping("/login")
     public boolean login(@RequestBody User user) {
-        return
-                user.getUsername().equals("user") && user.getPassword().equals("password");
+        return service.userExists(user);
     }
 
     @RequestMapping("/user")
