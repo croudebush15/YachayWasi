@@ -1,10 +1,7 @@
 package com.pe.proyectotechnologico.Model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,11 +9,11 @@ import java.util.Date;
 import static javax.persistence.GenerationType.IDENTITY;
 
 
-@Getter
-@Setter
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Data
 @Table(name = "teacher", uniqueConstraints = @UniqueConstraint(columnNames = "DNI"))
 public class Teacher implements java.io.Serializable {
 

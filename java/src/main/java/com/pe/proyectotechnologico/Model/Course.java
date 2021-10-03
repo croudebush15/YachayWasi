@@ -1,18 +1,14 @@
 package com.pe.proyectotechnologico.Model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -21,7 +17,7 @@ public class Course {
         @Id
         @GeneratedValue(strategy = IDENTITY)
         @Column(name = "idCourse", unique = true, nullable = false)
-        private String idCourse;
+        private String id;
         private String name;
         private String description;
 }

@@ -1,9 +1,6 @@
 package com.pe.proyectotechnologico.Model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -11,8 +8,7 @@ import java.util.Date;
 import static javax.persistence.GenerationType.IDENTITY;
 
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -22,7 +18,7 @@ public class Student implements java.io.Serializable {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "idStudent", unique = true, nullable = false)
-    private Integer idStudent;
+    private Integer id;
     private String name;
     private String lastName;
     private String DNI;
