@@ -4,7 +4,8 @@ package com.pe.proyectotechnologico.Controller;
 
 import com.pe.proyectotechnologico.Model.User;
 import com.pe.proyectotechnologico.Service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,8 +25,12 @@ public class UserController {
     }
 
     @RequestMapping("/login")
-    public boolean login(@RequestBody User user) {
-        return service.userExists(user);
+    public ResponseEntity login(@RequestBody User user) {
+        User loggedUser = service.userExists(user);
+        if(loggedUser == null){
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity(loggedUser.getTeacher(), HttpStatus.OK);
     }
 
     @RequestMapping("/user")

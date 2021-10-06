@@ -21,15 +21,16 @@ export class InicioComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        sessionStorage.setItem('token', '');
+        sessionStorage.clear();
         this.loginError = false;
     }
 
     login() {
-        this.service.login(this.model.username, this.model.password).subscribe(isValid => {
-            if (isValid) {
+        this.service.login(this.model.username, this.model.password).subscribe(user => {
+            if (user) {
                 sessionStorage.setItem('token', btoa(this.model.username + ':' + this.model.password));
-                console.log(sessionStorage.getItem("token"));
+                sessionStorage.setItem('user', JSON.stringify(user))
+                //console.log(sessionStorage.getItem("user"));
                 this.router.navigate(['']);                
             } else {
                 this.loginError = true;

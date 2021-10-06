@@ -1,6 +1,7 @@
 package com.pe.proyectotechnologico.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -14,21 +15,28 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @Entity
 @Data
-@Table(name = "teacher", uniqueConstraints = @UniqueConstraint(columnNames = "DNI"))
+@Table(name = "teacher", uniqueConstraints = @UniqueConstraint(columnNames = "document_number"))
 public class Teacher implements java.io.Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "idTeacher", unique = true, nullable = false)
     private Integer idTeacher;
-    private String name;
+    private String firstName;
     private String lastName;
-    private String DNI;
+    private String document_number;
     private Date birthDate;
-    private String cellphone;
+    private String phone;
     private String email;
     private String address;
-    private Boolean Status;
+    private Boolean status;
+    @Column(name = "role")
+    private String role;
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "teacher", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private User user;
 
 
 }

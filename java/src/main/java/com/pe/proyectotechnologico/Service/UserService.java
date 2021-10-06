@@ -41,11 +41,13 @@ public class UserService implements CrudService<User,Integer> {
         return repository.findAll();
     }
 
-    public Boolean userExists(User userLogin){
+    public User userExists(User userLogin){
         User user = repository.findByUsername(userLogin.getUsername());
-        if (user == null) return false;
-        else if (Objects.equals(user.getPassword(), userLogin.getPassword()))
-            return true;
-        else return false;
+        if (user != null){
+            if (Objects.equals(user.getPassword(), userLogin.getPassword()))
+                return user;
+            else return null;
+        }
+        else return null;
     }
 }
