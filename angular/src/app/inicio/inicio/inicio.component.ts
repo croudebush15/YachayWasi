@@ -29,9 +29,11 @@ export class InicioComponent implements OnInit {
         this.service.login(this.model.username, this.model.password).subscribe(user => {
             if (user) {
                 sessionStorage.setItem('token', btoa(this.model.username + ':' + this.model.password));
-                sessionStorage.setItem('user', JSON.stringify(user))
-                //console.log(sessionStorage.getItem("user"));
-                this.router.navigate(['']);                
+                sessionStorage.setItem('user', JSON.stringify(user));
+                sessionStorage.setItem('role', user.role);
+                if (user.role === "ADMIN") this.router.navigate(['admin']); 
+                else this.router.navigate(['']); 
+                //console.log(sessionStorage.getItem("user"));              
             } else {
                 this.loginError = true;
             }
