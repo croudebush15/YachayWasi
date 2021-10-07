@@ -32,7 +32,7 @@ export class InicioComponent implements OnInit {
                 sessionStorage.setItem('user', JSON.stringify(user));
                 sessionStorage.setItem('role', user.role);
                 if (user.role === "ADMIN") this.router.navigate(['admin']); 
-                else this.router.navigate(['']); 
+                else this.router.navigate(['dashboard']); 
                 //console.log(sessionStorage.getItem("user"));              
             } else {
                 this.loginError = true;
