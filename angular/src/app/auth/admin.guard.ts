@@ -13,7 +13,7 @@ export class AdminGuard implements CanActivate {
       if (sessionStorage.getItem('role') === "ADMIN") {  
           return true;  
       }  
-      else this.router.navigateByUrl("");
+      else this.router.navigateByUrl("/inicio");
       return false; 
   } 
 }

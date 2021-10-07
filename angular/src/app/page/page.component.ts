@@ -13,6 +13,7 @@ export class PageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    sessionStorage.clear();
   }
 
 }
