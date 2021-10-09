@@ -2,10 +2,12 @@ package com.pe.proyectotechnologico.Model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -30,13 +32,19 @@ public class Teacher implements java.io.Serializable {
     private String email;
     private String address;
     private Boolean status;
-    @Column(name = "role")
     private String role;
 
     @JsonIgnore
     @OneToOne(mappedBy = "teacher", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private User user;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
+    private List<Classroom> classroomList;
+
+
+
 
 
 }
