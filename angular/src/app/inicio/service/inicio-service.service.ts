@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class InicioService {
 
-  // private baseApiUrl = "https://yachay-wasi.herokuapp.com";
-  private baseApiUrl = "http://localhost:8082";
+  private baseApiUrl = "https://yachay-wasi.herokuapp.com";
+  //private baseApiUrl = "http://localhost:8082";
 
   constructor(private http: HttpClient) { }
 

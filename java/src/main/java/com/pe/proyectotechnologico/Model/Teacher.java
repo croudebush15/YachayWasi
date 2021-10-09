@@ -2,7 +2,6 @@ package com.pe.proyectotechnologico.Model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -32,6 +31,7 @@ public class Teacher implements java.io.Serializable {
     private String email;
     private String address;
     private Boolean status;
+    @Column(name = "role")
     private String role;
 
     @JsonIgnore
@@ -47,4 +47,19 @@ public class Teacher implements java.io.Serializable {
 
 
 
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "idTeacher=" + idTeacher +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", document_number='" + document_number + '\'' +
+                ", birthDate=" + birthDate +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", status=" + status +
+                ", role='" + role + '\'' +
+                '}';
+    }
 }
